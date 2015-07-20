@@ -89,6 +89,35 @@ sure you have walked through it at least once in a browser as a typical user.
 
 How do you know if it is actually testing anything if the `assert` never failed?
 
+## Write descriptive failure messages
+
+When tests fail they should tell you exactly why.
+
+Yes:
+
+    response = self.client.post('/api/v1/data/', data=SAMPLE)
+    assert response.status_code == status.HTTP_201_CREATED, "expected HTTP_201, got HTTP_{} data: {}".format(response.status_code, response.data)
+
+This results in a message which explains exactly what was expected and why the test failed:
+
+    >           assert response.status_code == status.HTTP_201_CREATED, "expected HTTP_201, got HTTP_{} data: {}".format(response.status_code, response.data)
+    E           AssertionError: expected HTTP_201, got HTTP_400 data: {'name': [u'This field is required.']}
+    E           assert 400 == 201
+    E            +  where 400 = <rest_framework.response.Response object at 0x1070bbb10>.status_code
+    E            +  and   201 = status.HTTP_201_CREATED
+
+No:
+
+    response = self.client.post('/api/v1/data/', data=SAMPLE)
+    assert response.status_code == status.HTTP_201_CREATED
+
+This results in a message which isn't very helpful in diagnosing the test failure:
+
+    >           assert response.status_code == status.HTTP_201_CREATED
+    E           AssertionError: assert 201 == 400
+    E            +  where 400 = <rest_framework.response.Response object at 0x1070bbb10>.status_code
+    E            +  and   201 = status.HTTP_201_CREATED
+
 ## Prefer fewer asserts per test
 
 # Structure
