@@ -192,7 +192,7 @@ fire and we need to fix a bug. Strive for readability in tests.
 Every single test should have a human-readable docstring. The docstring should
 follow the pattern of the rest of the module.
 
-Don't end docstrings with a period
+See the PEP guidelines for more info on [docstring conventions](https://www.python.org/dev/peps/pep-0257/).
 
 ## Use "should" in every docstring
 
