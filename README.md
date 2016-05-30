@@ -29,7 +29,7 @@ Configure the Python linting plugin for your editor and use it every time withou
 
 Tests should (almost) always accompany code we write professionally. We're
 fortunate to work in an environment where testing is actively encouraged, so
-don't waste that priveledge. We get away with all sorts of other efficiencies
+don't waste that privilege. We get away with all sorts of other efficiencies
 and laziness because of our sincere dedication to pragmatic and practical
 testing.
 
